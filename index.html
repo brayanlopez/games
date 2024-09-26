@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Gamedev Canvas Workshop</title>
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      canvas {
+        background: #eee;
+        display: block;
+        margin: 0 auto;
+      }
+
+      .menu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+
+  <body>
+    <canvas id="myCanvas" width="480" height="320"></canvas>
+
+    <div class="menu">
+      <div>
+        <label for="color">Choose color</label>
+
+        <input id="color" type="color" value="#0095DD" />
+      </div>
+      <br />
+      <button id="runButton">Start game</button>
+    </div>
+
+    <script src="index.mjs"></script>
+  </body>
+</html>
