@@ -1,40 +1,27 @@
-const canvas = document.getElementById("myCanvas");
+import {
+  gameSettings,
+  createGameInfo,
+  createBall,
+  createPaddle,
+  brick,
+  createBricks,
+  checkBrickCollision,
+} from "./gameLogic.mjs";
 
+const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
 
-const gameSettings = {
-  generalColor: "#0095DD",
-  font: "16px Arial",
-};
-
-const gameInfo = {
-  lives: 3,
-  score: 0,
-  status: "IN_PROGRESS",
-};
+const gameInfo = createGameInfo();
 
 let loopGame;
 let rightPressed = false;
 let leftPressed = false;
 
-const ball = {
-  x: canvas.width / 2,
-  y: canvas.height - 30,
-  radius: 10,
-};
-
+const ball = createBall(canvas);
 let dx = 2;
 let dy = -2;
 
-const paddle = {
-  height: 10,
-  width: 75,
-  // TODO: check how to reference its own height and width
-  x: (canvas.width - 75) / 2,
-  y: canvas.height - 10,
-};
-
-const brick = () => ({ x: 0, y: 0, status: 1, width: 75, height: 20 });
+const paddle = createPaddle(canvas);
 
 const bricks = [];
 const brickRowCount = 3;
@@ -43,10 +30,9 @@ const brickPadding = 10;
 const brickOffsetTop = 30;
 const brickOffsetLeft = 30;
 
-const createBricks = () => {
+const createBricksLocal = () => {
   for (let c = 0; c < brickColumnCount; c++) {
     bricks[c] = [];
-
     for (let r = 0; r < brickRowCount; r++) {
       bricks[c][r] = brick();
     }
@@ -141,7 +127,7 @@ function mouseMoveHandler(e) {
 
 const setGameConfig = () => {
   gameSettings.generalColor = document.getElementById("color").value;
-  createBricks();
+  createBricksLocal();
 };
 
 const finishGame = (message = "GAME OVER!") => {
