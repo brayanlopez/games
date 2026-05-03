@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Breakout Game</title>
+    <style>
+      .back-btn {
+        display: inline-block;
+        margin: 1rem;
+        padding: 0.5rem 1rem;
+        background: #00d4ff;
+        color: #1a1a2e;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 600;
+      }
+      .back-btn:hover {
+        background: #00b8e6;
+      }
+
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      canvas {
+        background: #eee;
+        display: block;
+        margin: 0 auto;
+      }
+      .menu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="../../index.html" class="back-btn">← Back to Games</a>
+    <canvas id="myCanvas" width="480" height="320"></canvas>
+    <div class="menu">
+      <div>
+        <label for="color">Choose color</label>
+        <input id="color" type="color" value="#0095DD" />
+      </div>
+      <br />
+      <button id="runButton">Start game</button>
+    </div>
+    <script src="index.mjs"></script>
+  </body>
+</html>

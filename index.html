@@ -1,47 +1,149 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Gamedev Canvas Workshop</title>
-
+    <title>Games Repository</title>
     <style>
       * {
         padding: 0;
         margin: 0;
+        box-sizing: border-box;
       }
 
-      canvas {
-        background: #eee;
-        display: block;
-        margin: 0 auto;
-      }
-
-      .menu {
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: #1a1a2e;
+        color: #eee;
+        min-height: 100vh;
         display: flex;
-        justify-content: center;
-        align-items: center;
         flex-direction: column;
+        align-items: center;
+        padding: 2rem;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        color: #00d4ff;
+      }
+
+      .subtitle {
+        color: #888;
+        margin-bottom: 3rem;
+        font-size: 1.1rem;
+      }
+
+      .games-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+        max-width: 1200px;
+        width: 100%;
+      }
+
+      .game-card {
+        background: #16213e;
+        border-radius: 12px;
+        padding: 1.5rem;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        border: 1px solid #0f3460;
+      }
+
+      .game-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba(0, 212, 255, 0.15);
+      }
+
+      .game-card h2 {
+        color: #00d4ff;
+        margin-bottom: 0.5rem;
+        font-size: 1.4rem;
+      }
+
+      .game-card p {
+        color: #aaa;
+        margin-bottom: 1rem;
+        line-height: 1.5;
+      }
+
+      .game-card a {
+        display: inline-block;
+        background: #00d4ff;
+        color: #1a1a2e;
+        padding: 0.5rem 1.2rem;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background 0.2s;
+      }
+
+      .game-card a:hover {
+        background: #00b8e6;
+      }
+
+      .empty-state {
+        text-align: center;
+        padding: 3rem;
+        color: #666;
+        font-style: italic;
+        grid-column: 1 / -1;
       }
     </style>
   </head>
-
   <body>
-    <canvas id="myCanvas" width="480" height="320"></canvas>
+    <h1>Games Repository</h1>
+    <p class="subtitle">A collection of games and experiments</p>
 
-    <div class="menu">
-      <div>
-        <label for="color">Choose color</label>
+    <div class="games-grid" id="gamesGrid"></div>
 
-        <input id="color" type="color" value="#0095DD" />
-      </div>
-      <br />
-      <button id="runButton">Start game</button>
-    </div>
+    <script>
+      const games = [
+        {
+          name: "Phaser Intro",
+          description:
+            "Introduction to Phaser game framework with a simple interactive demo.",
+          link: "games/phaser-intro/index.html",
+        },
+        {
+          name: "Snake",
+          description:
+            "The classic Snake game with score tracking and smooth controls.",
+          link: "games/snake/index.html",
+        },
+        {
+          name: "Breakout",
+          description:
+            "Classic breakout game with customizable paddle color and interactive gameplay.",
+          link: "games/breakout/index.html",
+        },
+      ];
 
-    <script src="index.mjs"></script>
+      function renderGames() {
+        const grid = document.getElementById("gamesGrid");
+
+        if (games.length === 0) {
+          grid.innerHTML =
+            '<div class="empty-state">No games yet. Add games to the games array to see them here.</div>';
+          return;
+        }
+
+        games.forEach((game) => {
+          const card = document.createElement("div");
+          card.className = "game-card";
+          card.innerHTML = `
+            <h2>${game.name}</h2>
+            <p>${game.description}</p>
+            <a href="${game.link}">Play</a>
+          `;
+          grid.appendChild(card);
+        });
+      }
+
+      renderGames();
+    </script>
   </body>
 </html>

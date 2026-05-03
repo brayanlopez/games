@@ -243,7 +243,7 @@ function draw() {
     ctx.fillText(
       "perdiste, oprimer enter",
       canvas.width / 4,
-      canvas.height / 2
+      canvas.height / 2,
     );
   }
   ctxScore.fillText(manager.getScore(), 10, 50);

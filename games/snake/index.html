@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 
 <html>
   <head>
@@ -6,8 +6,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link type="text/css" rel="stylesheet" href="Estilos.css" />
+    <style>
+      .back-btn {
+        display: inline-block;
+        margin: 1rem;
+        padding: 0.5rem 1rem;
+        background: #00d4ff;
+        color: #1a1a2e;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 600;
+      }
+      .back-btn:hover {
+        background: #00b8e6;
+      }
+    </style>
   </head>
-  <body onkeydown="control(event);">
+  <body onkeydown="control(event)">
+    <a href="../../index.html" class="back-btn">← Back to Games</a>
     <header>
       <h1>Bienvenido a Snake</h1>
     </header>
